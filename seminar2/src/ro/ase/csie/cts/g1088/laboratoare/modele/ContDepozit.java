@@ -1,6 +1,7 @@
 package ro.ase.csie.cts.g1088.laboratoare.modele;
 
 import ro.ase.csie.cts.g1088.laboratoare.exceptii.ExceptieFonduriInsuficiente;
+import ro.ase.csie.cts.g1088.laboratoare.exceptii.ExceptieTransferIlegal;
 import ro.ase.csie.cts.g1088.laboratoare.interfete.Profitabil;
 
 public class ContDepozit extends ContBancar implements Profitabil{
@@ -30,7 +31,7 @@ public class ContDepozit extends ContBancar implements Profitabil{
 	}
 
 	@Override
-	public void transfer(Cont destinatie, Double valoare) throws ExceptieFonduriInsuficiente {
+	public void transfer(Cont destinatie, Double valoare) throws ExceptieFonduriInsuficiente, ExceptieTransferIlegal {
 		if(this==destinatie) {
 			throw new ExceptieTransferIlegal();
 		}
