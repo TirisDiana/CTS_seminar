@@ -1,0 +1,23 @@
+package ro.ase.csie.cts.g1088.dp.singleton.statica;
+
+public class ConexiuneBD {
+	  String ip;
+	  String denumire;
+	  
+	  public static final ConexiuneBD conexiune;
+	  
+	  //se executa o singura data cand clasa e compilata
+	  static {
+		  //preluare date conexiune din alte surse
+		  String ip="127.0.0.1";
+		  String denumire="bdtest";
+		  conexiune=new ConexiuneBD(ip,denumire);
+	  }
+
+	private ConexiuneBD(String ip, String denumire) {
+		this.ip = ip;
+		this.denumire = denumire;
+	}
+	  
+	  
+}
