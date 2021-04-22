@@ -27,7 +27,7 @@ public class Produs {
 	    	pretFinal = pretInitial;
 	    	break;
 	    case DISCOUNT:	
-	    	  discount=TipProdus.STOC_LIMITAT.getDiscount();
+	    	  discount=TipProdus.DISCOUNT.getDiscount();
 		      pretFinal = (pretInitial - (discount * pretInitial)) - discountFidelitate * (pretInitial - (discount * pretInitial));
 		      break;
 	    case STOC_LIMITAT:

@@ -1,0 +1,65 @@
+Code Review:
+
+1. Am structurat proiectul pe pachete-> un pachet pentru clase si un pachet pentru Main
+
+2. Am descompus clasa Cont in: interfata Rata, clasa Comision si clasa Cont 
+-> nu era respectat Single Responsability Principle
+
+In clasa Cont:
+
+3. Variabilele nu trebuie declarate cu virgula pe acelasi rand->
+trebuie sa fie declarate pe linii separate, deoarece unele pot fi final si altele nu(valoareImprumut nu este final)
+
+4. Atributele sunt de tipul package(cel implicit) ->trebuie sa adaug modificatori de acces private la atribute pentru a nu permite accesul
+
+5. Atributele folosite doar la constructor si getter -> le declar final(rata, zileActivitate, tipCont)
+
+6. Numele variabilelor nu respecta conventia de nume: am redenumit dupa conventii de nume
+(primul cuvant incepe cu litera mica, al doilea cu litera mare) si le-am redenumit sugestiv(zileActivitate)
+
+7. Getteri nu ar trebui sa aiba system.out.println -> am sters printurile din getteri.
+Getteri trebuie sa returneze doar valoarea atributului 
+
+8. Avem variabilele sunt declarate constante int-> am creat o clasa enum Account in care exista
+tipurile de conturi care pot fi folosite. Am creat atributul valoare pentru care am facut constructor si getter
+ca sa putem sa-i luam valoarea in metoda calculeazaComision
+
+9. Numele metodelor nu respecta conventia de nume -> numele metodelor trebuie sa descrie clar ce fac
+Metoda imprumut am redenumit-o in getValoareImprumut, metoda setValoare in setValoareImprumut si
+metoda to_string in toString
+
+10. Am adaugat getter pentru tipCont si zileActivitate(getTipCont si getZileActivitate), deoarece sunt in metoda calculeazaComision
+
+11. In constructorul din clasa cont am adaugat si zileActivitate, deoarece nu era atribuit si este necesar
+
+12. Am folosit Javadoc pentru a pune comentariul cu metoda obligatorie si ce returneaza metoda. 
+Nu avem nevoie de comentarii, codul bine scris este auto-explicativ
+
+13.La metoda toString sunt incalcate regulile de scriere a codului sursa -> Operatorii trebuie separati de operanzi printr-un spatiu
+
+14.In metoda print am scos variabila hardcodata vb -> nu trebuie sa folosim magic numbers
+
+15. Am mutat metoda statica in clasa Comision-> incalca Single Responsability Principle 
+Am schimbat si numele metodei(calculeazaComision), numele trebuie sa descrie ce face metoda
+
+In Comision:
+
+16.Ne folosim de getteri din Cont pentru a lua valoarea, nu folosim direct variabila
+
+17.Am eliminat comentariile, codul bine scris este auto-explicativ
+
+18. Nu folosim valori hard-codate(magic numbers) -> variabila temp am folosit-o in functia calculeazaComision
+
+19. In calculeazaComision am apelat metoda din Account si am luat valoarea enumului
+
+20. Am transformat for-ul din metoda statica in foreach
+
+In Rata:
+
+21. Interfata rata este implementata in Cont si are metoda getRataLunara sa fie folosita in alte clase
+
+In Main:
+
+22. Am facut clasa Main pentru a testa -> am declarat 3 obiecte de tipul Cont si pentru
+calcului comisionului am creat un array cu cele 3 conturi si am apelat metoda statica din Comision
+
